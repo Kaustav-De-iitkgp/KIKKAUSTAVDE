@@ -1,7 +1,7 @@
 import hashlib
 import os
 
-def salt():
+def generate_salt():
     return os.urandom(16)
     
 def hash(password, salt):
@@ -13,7 +13,7 @@ user_data = {}
 def sign_up():
     username = input("Enter username: ")
     password = input("Enter password: ")
-    salt = salt()
+    salt = generate_salt()
     hashed_password = hash(password, salt)
     user_data[username] = {'hashed_password': hashed_password, 'salt': salt}
     print(f"Sign up successful! Welcome, {username}.")
